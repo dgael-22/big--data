@@ -1,46 +1,73 @@
-# Práctica 1 — Análisis de la evolución poblacional mundial
+# Big Data
 
-Práctica de **Probabilidad y Estadística**. Se realiza una primera exploración y un análisis
-estadístico descriptivo del cambio anual de población a nivel mundial, utilizando Python,
-Pandas, NumPy y Jupyter Notebook.
+Repositorio de prácticas y proyectos desarrollados durante la materia de **Big Data**.
 
-## Fuente de los datos
+## Descripción
 
-Los datos provienen de **Our World in Data (OWID)**. La fuente original es
-**United Nations, World Population Prospects (2024)**.
+Este repositorio contiene las prácticas, ejercicios y proyectos realizados durante el curso.
+Cada práctica se plantea como un proyecto de datos independiente, con sus propios datos,
+código, dependencias y entorno de ejecución. El repositorio permite mantener un registro de
+la evolución del trabajo mediante Git y GitHub.
 
-> UN, World Population Prospects (2024) – processed by Our World in Data. “Annual change in
-> population – UN WPP” [dataset]. United Nations, “World Population Prospects”; United Nations,
-> “World Population Prospects - Interim Update” [original data].
+## Herramientas utilizadas
 
-La variable principal, *Annual change in population*, representa el **cambio neto anual de la
-población** (diferencia entre la población al 1 de julio de años consecutivos), medido en
-número de personas. Refleja de forma combinada nacimientos, defunciones y migración.
+- **Python 3.13** — lenguaje de programación empleado en todos los análisis.
+- **Pandas** — carga, exploración y manipulación de los conjuntos de datos.
+- **NumPy** — operaciones numéricas y cálculo de medidas estadísticas.
+- **Jupyter Notebook** — entorno de trabajo donde se documenta y ejecuta cada análisis.
+- **Visual Studio Code** — editor utilizado para desarrollar los notebooks.
+- **Git y GitHub** — control de versiones y publicación del trabajo.
 
-## Estructura del repositorio
+## Organización del repositorio
+
+Cada carpeta de la raíz corresponde a una práctica independiente. El nombre sigue la
+convención `U<unidad>_<número>_<tema>`, de modo que las prácticas quedan ordenadas por
+unidad y por orden de realización.
 
 ```
-.
-├── README.md
-├── requirements.txt
-├── .gitignore
-├── data/
-│   └── raw/                                 # Datos originales (sin modificar)
-│       ├── annual-population-growth/
-│       └── births-and-deaths-projected-to-2100/
-└── notebooks/
-    └── 01_evolucion_poblacional.ipynb       # Notebook con las Actividades 1 a 4
+bigdata/
+├── README.md                            # Este archivo: índice general de la materia
+├── .gitignore                           # Reglas de exclusión para todas las prácticas
+│
+└── U1_1_probabilidad_estadistica/       # Práctica 1
+    ├── README.md                        # Documentación específica de la práctica
+    ├── requirements.txt                 # Dependencias de la práctica
+    ├── data/
+    │   ├── raw/                         # Datos originales, sin modificar
+    │   └── processed/                   # Datos transformados (si se generan)
+    ├── notebooks/                       # Notebooks del análisis
+    └── src/                             # Código auxiliar reutilizable
 ```
 
-## Requisitos e instalación
+Cada práctica es autónoma: tiene su propio `README.md`, su propio `requirements.txt` y su
+propio entorno virtual `.venv`, que no se versiona.
 
-Se requiere **Python 3.13**. Para reproducir el entorno de la práctica:
+## Prácticas disponibles
+
+| Carpeta | Práctica | Unidad | Tema |
+|---|---|---|---|
+| [`U1_1_probabilidad_estadistica/`](U1_1_probabilidad_estadistica/) | Análisis de la evolución poblacional mundial | Unidad 1 | Probabilidad y Estadística |
+
+### U1_1 — Análisis de la evolución poblacional mundial
+
+Primera exploración y análisis estadístico descriptivo del cambio anual de población a nivel
+mundial. Se utiliza el conjunto de datos *Annual change in population* de **Our World in Data**,
+elaborado a partir de **United Nations, World Population Prospects (2024)**. El análisis cubre la
+identificación y documentación de la fuente, la carga y exploración del CSV, el cálculo de
+medidas de estadística descriptiva (media, mediana, varianza, desviación estándar, mínimo y
+máximo) sobre el año 2020, y la comprobación de las versiones del entorno de trabajo.
+
+## Cómo trabajar con una práctica
+
+Cada práctica se ejecuta de forma independiente. Desde la carpeta de la práctica:
 
 ```bash
 # Crear y activar el entorno virtual
 python -m venv .venv
+
 # Windows
 .venv\Scripts\activate
+
 # Linux / macOS
 source .venv/bin/activate
 
@@ -48,19 +75,5 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Cómo ejecutar el análisis
-
-1. Abrir el notebook `notebooks/01_evolucion_poblacional.ipynb` en VS Code o Jupyter.
-2. Seleccionar como kernel el entorno virtual `.venv`.
-3. Ejecutar todas las celdas desde el inicio (**Run All**).
-
-El notebook está preparado para ejecutarse **de principio a fin sin errores**.
-
-## Contenido del notebook
-
-- **Actividad 1 — Identificación de la fuente:** documentación y cita de la fuente de datos.
-- **Actividad 2 — Carga y exploración de datos:** carga del CSV y exploración inicial
-  (dimensiones, columnas, tipos de datos, estadísticas, valores faltantes y número de entidades).
-- **Actividad 3 — Estadística descriptiva:** medidas estadísticas (media, mediana, varianza,
-  desviación estándar, mínimo y máximo) sobre el cambio anual de población de un año histórico.
-- **Actividad 4 — Comprobación del entorno:** verificación de las versiones de Python, Pandas y NumPy.
+Los detalles de cada práctica —fuente de los datos, variables utilizadas, actividades y forma
+de ejecución— están documentados en el `README.md` de su propia carpeta.
