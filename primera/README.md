@@ -29,14 +29,23 @@ bigdata/
 ├── README.md                            # Este archivo: índice general de la materia
 ├── .gitignore                           # Reglas de exclusión para todas las prácticas
 │
-└── U1_1_probabilidad_estadistica/       # Práctica 1
-    ├── README.md                        # Documentación específica de la práctica
-    ├── requirements.txt                 # Dependencias de la práctica
+├── U1_1_probabilidad_estadistica/       # Práctica 1
+│   ├── README.md                        # Documentación específica de la práctica
+│   ├── requirements.txt                 # Dependencias de la práctica
+│   ├── data/
+│   │   ├── raw/                         # Datos originales, sin modificar
+│   │   └── processed/                   # Datos transformados (si se generan)
+│   ├── notebooks/                       # Notebooks del análisis
+│   └── src/                             # Código auxiliar reutilizable
+│
+└── U3_1_modelos_ml/                     # Práctica 2
+    ├── README.md
+    ├── requirements.txt
     ├── data/
-    │   ├── raw/                         # Datos originales, sin modificar
-    │   └── processed/                   # Datos transformados (si se generan)
-    ├── notebooks/                       # Notebooks del análisis
-    └── src/                             # Código auxiliar reutilizable
+    │   ├── raw/
+    │   └── processed/
+    ├── notebooks/
+    └── src/
 ```
 
 Cada práctica es autónoma: tiene su propio `README.md`, su propio `requirements.txt` y su
@@ -47,6 +56,7 @@ propio entorno virtual `.venv`, que no se versiona.
 | Carpeta | Práctica | Unidad | Tema |
 |---|---|---|---|
 | [`U1_1_probabilidad_estadistica/`](U1_1_probabilidad_estadistica/) | Análisis de la evolución poblacional mundial | Unidad 1 | Probabilidad y Estadística |
+| [`U3_1_modelos_ml/`](U3_1_modelos_ml/) | Comparación de modelos de regresión | Unidad 3 | Aprendizaje supervisado |
 
 ### U1_1 — Análisis de la evolución poblacional mundial
 
@@ -56,6 +66,15 @@ elaborado a partir de **United Nations, World Population Prospects (2024)**. El 
 identificación y documentación de la fuente, la carga y exploración del CSV, el cálculo de
 medidas de estadística descriptiva (media, mediana, varianza, desviación estándar, mínimo y
 máximo) sobre el año 2020, y la comprobación de las versiones del entorno de trabajo.
+
+### U3_1 — Comparación de modelos de regresión
+
+Primera práctica de aprendizaje supervisado. Se construyen tres modelos de regresión
+—lineal, polinomial de grado 2 y Random Forest— para proyectar los nacimientos y las
+defunciones de México hasta el año 2100, utilizando el conjunto de datos *Births and deaths
+projected to 2100* de **Our World in Data**. Los tres modelos se entrenan con los mismos datos
+históricos (1950–2023) y se comparan visualmente entre sí y contra las proyecciones de la ONU,
+para observar los riesgos de la extrapolación.
 
 ## Cómo trabajar con una práctica
 
