@@ -1,0 +1,146 @@
+{
+  "dataset": {
+    "filas_totales": 39562,
+    "entidades": 262,
+    "anio_min": 1950,
+    "anio_max": 2100,
+    "nulos_por_columna": {
+      "Entity": 0,
+      "Code": 1208,
+      "Year": 0,
+      "deaths_estimates": 20618,
+      "deaths_projected": 19850,
+      "births_estimates": 20396,
+      "births_projected": 19619,
+      "births": 453,
+      "deaths": 906
+    },
+    "mexico_filas": 151,
+    "mexico_hist": [
+      1950,
+      2023,
+      74
+    ],
+    "mexico_proy": [
+      2024,
+      2100,
+      77
+    ],
+    "nulos_mexico_hist": {
+      "Year": 0,
+      "births": 0,
+      "deaths": 0
+    },
+    "train": [
+      1950,
+      2010,
+      61
+    ],
+    "test": [
+      2011,
+      2023,
+      13
+    ]
+  },
+  "coeficientes": {
+    "births": {
+      "pendiente": 8510.803983709735,
+      "intercepto": -14733373.127152901
+    },
+    "deaths": {
+      "pendiente": 3635.511336542021,
+      "intercepto": -6653277.5538245095
+    }
+  },
+  "metricas_prueba": {
+    "births": {
+      "Regresion lineal": {
+        "MAE": 572111.8984216712,
+        "RMSE": 592459.1828018792,
+        "R2": -36.05420353250461
+      },
+      "Regresion polinomial": {
+        "MAE": 205507.26587820053,
+        "RMSE": 213414.65711462052,
+        "R2": -3.8080513621245835
+      },
+      "Random Forest": {
+        "MAE": 138623.79538461546,
+        "RMSE": 165867.72710424726,
+        "R2": -1.9043195575099885
+      }
+    },
+    "deaths": {
+      "Regresion lineal": {
+        "MAE": 236339.4633039093,
+        "RMSE": 278223.00786351855,
+        "R2": -2.5036908145886563
+      },
+      "Regresion polinomial": {
+        "MAE": 73355.80926158794,
+        "RMSE": 142607.56730910888,
+        "R2": 0.07949779188769035
+      },
+      "Random Forest": {
+        "MAE": 139471.0146153846,
+        "RMSE": 203827.0090023664,
+        "R2": -0.880455908582592
+      }
+    }
+  },
+  "resumen_proyecciones": {
+    "births": {
+      "2100": {
+        "lineal": 3139315.2386375405,
+        "poly": -4401122.586889744,
+        "rf": 2054206.7
+      },
+      "2100_owid": 1098210.0,
+      "2050": {
+        "lineal": 2713775.0394520536,
+        "poly": 543760.0978717804,
+        "rf": 2054206.7
+      },
+      "2050_owid": 1643767.0,
+      "mae_vs_owid": {
+        "lineal": 1298446.9599838448,
+        "poly": 2183528.916635643,
+        "rf": 536748.9727272729
+      },
+      "rf_valores_distintos": 1,
+      "max_hist": [
+        1993,
+        2478574.0
+      ],
+      "valor_2023": 2037689.0,
+      "valor_1950": 1358501.0
+    },
+    "deaths": {
+      "2100": {
+        "lineal": 981296.2529137349,
+        "poly": 3509730.8083189726,
+        "rf": 869570.28
+      },
+      "2100_owid": 1793462.0,
+      "2050": {
+        "lineal": 799520.6860866342,
+        "poly": 1527162.8855175972,
+        "rf": 869570.28
+      },
+      "2050_owid": 1291889.0,
+      "mae_vs_owid": {
+        "lineal": 589820.9700826542,
+        "poly": 577743.6105478724,
+        "rf": 566800.5023376623
+      },
+      "rf_valores_distintos": 1,
+      "max_hist": [
+        2021,
+        1150760.0
+      ],
+      "valor_2023": 799360.0,
+      "valor_1950": 596771.0
+    },
+    "poly_primer_anio_negativo": 2058
+  }
+}
