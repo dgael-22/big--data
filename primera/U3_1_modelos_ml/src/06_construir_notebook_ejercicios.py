@@ -1056,6 +1056,155 @@ tabla_mx_defunciones = construir_tabla(
 display(tabla_mx_defunciones.style.format("{:,.0f}"))
 """)
 
+# ================================================== datasets adicionales
+md("""
+---
+
+# PARTE 3. Datasets adicionales de Our World in Data
+
+Además del dataset de nacimientos y defunciones, se cargan dos indicadores más,
+con el mismo método (`pd.read_csv` directo desde OWID):
+
+1. **Total healthcare spending as a share of GDP (2000 a 2023)** — gasto total en salud
+   como porcentaje del PIB.
+2. **GDP per capita** — PIB por persona.
+""")
+
+md("""
+## 1. Gasto en salud como porcentaje del PIB
+""")
+
+code("""
+df_health = pd.read_csv(
+    "https://ourworldindata.org/grapher/total-healthcare-expenditure-gdp.csv?v=1&csvType=full&useColumnShortNames=true",
+    storage_options={"User-Agent": "Our World In Data data fetch/1.0"}
+)
+
+df_health.head()
+""")
+
+code("""
+print("Dimensiones (filas, columnas):", df_health.shape)
+print("Rango de años:", df_health["year"].min(), "-", df_health["year"].max())
+print()
+print("Columnas:")
+for columna in df_health.columns:
+    print("  -", columna)
+""")
+
+code("""
+df_health = df_health.rename(columns={
+    "entity": "Entity",
+    "code": "Code",
+    "year": "Year",
+    "current_health_expenditure__che__as_percentage_of_gross_domestic_product__gdp__pct": "health_gdp_pct",
+})
+
+df_health.head()
+""")
+
+md("""
+## 2. PIB per cápita
+""")
+
+code("""
+df_gdp = pd.read_csv(
+    "https://ourworldindata.org/grapher/gdp-per-capita-worldbank.csv?v=1&csvType=full&useColumnShortNames=true",
+    storage_options={"User-Agent": "Our World In Data data fetch/1.0"}
+)
+
+df_gdp.head()
+""")
+
+code("""
+print("Dimensiones (filas, columnas):", df_gdp.shape)
+print("Rango de años:", df_gdp["year"].min(), "-", df_gdp["year"].max())
+print()
+print("Columnas:")
+for columna in df_gdp.columns:
+    print("  -", columna)
+""")
+
+code("""
+df_gdp = df_gdp.rename(columns={
+    "entity": "Entity",
+    "code": "Code",
+    "year": "Year",
+    "ny_gdp_pcap_pp_kd": "gdp_per_capita",
+})
+
+df_gdp.head()
+""")
+
+md("""
+## 3. Extraer China y México
+
+Se filtran los dos países que se usaron en los ejercicios, desde el año 2000.
+""")
+
+code("""
+paises = ["China", "Mexico"]
+
+df_health_paises = df_health[
+    (df_health["Entity"].isin(paises)) &
+    (df_health["Year"] >= 2000)
+]
+
+df_gdp_paises = df_gdp[
+    (df_gdp["Entity"].isin(paises)) &
+    (df_gdp["Year"] >= 2000)
+]
+
+print("Gasto en salud ->", df_health_paises.shape)
+print("PIB per cápita ->", df_gdp_paises.shape)
+
+df_health_paises.head(10)
+""")
+
+code("""
+df_gdp_paises.head(10)
+""")
+
+md("""
+## 4. Gráficas de los dos indicadores
+
+Mismo estilo de gráficas que se usó en los ejercicios anteriores.
+""")
+
+code("""
+plt.figure(figsize=(12, 5))
+
+for pais in paises:
+    datos = df_health_paises[df_health_paises["Entity"] == pais]
+    plt.plot(datos["Year"], datos["health_gdp_pct"], label=pais)
+
+plt.title("Gasto total en salud como porcentaje del PIB (2000-2023)")
+plt.xlabel("Año")
+plt.ylabel("Porcentaje del PIB")
+
+plt.ticklabel_format(style="plain", axis="y", useOffset=False)
+plt.legend()
+plt.grid()
+plt.show()
+""")
+
+code("""
+plt.figure(figsize=(12, 5))
+
+for pais in paises:
+    datos = df_gdp_paises[df_gdp_paises["Entity"] == pais]
+    plt.plot(datos["Year"], datos["gdp_per_capita"], label=pais)
+
+plt.title("PIB per cápita (desde el año 2000)")
+plt.xlabel("Año")
+plt.ylabel("PIB per cápita")
+
+plt.ticklabel_format(style="plain", axis="y", useOffset=False)
+plt.legend()
+plt.grid()
+plt.show()
+""")
+
 md("""
 ---
 
