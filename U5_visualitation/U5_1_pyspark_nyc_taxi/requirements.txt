@@ -1,0 +1,5 @@
+# U5.1 - PySpark local (Python 3.12, Java 17/21)
+pyspark==4.3.0
+pyarrow==26.0.1
+ipykernel
+nbconvert
